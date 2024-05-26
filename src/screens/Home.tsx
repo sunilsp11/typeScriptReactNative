@@ -6,6 +6,9 @@ import {RootStackParamsList} from './AppNavigator';
 import { StyleProvider } from './StylecContext';
 import Comp from '../components/Comp';
 import Products from '../components/Products';
+import Notes from '../components/Notes';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
 
 interface HomeScreenProps {
   navigation: StackNavigationProp<RootStackParamsList, 'Home'>;
@@ -59,9 +62,10 @@ const Home = ({navigation}: HomeScreenProps) => {
 
   return (
 
-    <StyleProvider>
+    // <StyleProvider>
+  
    <View style={{flex:1}}>
-      <Text
+      {/* <Text
         style={{padding: 10, borderWidth: 1, color: '#000'}}
         onPress={() =>
           navigation.navigate('Setting', {
@@ -70,7 +74,7 @@ const Home = ({navigation}: HomeScreenProps) => {
           })
         }>
         Go To Settings
-      </Text>
+      </Text> */}
       {/* <TextInput ref={ref} /> */}
 
       {/* <View style={{justifyContent:'center', alignItems:'center', flex:1}}>
@@ -81,9 +85,12 @@ const Home = ({navigation}: HomeScreenProps) => {
         <Comp/>
 
       </View> */}
-        <Products />
+        {/* <Products /> */}
+        <Provider store={store}>
+    <Notes/>
+    </Provider>
     </View>
-    </StyleProvider>
+    // </StyleProvider>
  
   );
 };
