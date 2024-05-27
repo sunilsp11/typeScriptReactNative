@@ -9,6 +9,8 @@ import Products from '../components/Products';
 import Notes from '../components/Notes';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
+import ComponentReusable from '../components/ComponentReusable';
+import Selection from '../components/Selection';
 
 interface HomeScreenProps {
   navigation: StackNavigationProp<RootStackParamsList, 'Home'>;
@@ -86,9 +88,12 @@ const Home = ({navigation}: HomeScreenProps) => {
 
       </View> */}
         {/* <Products /> */}
-        <Provider store={store}>
+        {/* <Provider store={store}>
     <Notes/>
-    </Provider>
+    </Provider> */}
+
+    {/* <ComponentReusable/>  */}
+    <Selection/> 
     </View>
     // </StyleProvider>
  
