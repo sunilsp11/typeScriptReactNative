@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import {View, Text, TextInput} from 'react-native';
-import React, { useReducer, useRef, useState } from 'react';
+import React, {useReducer, useRef, useState} from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamsList} from './AppNavigator';
-import { StyleProvider } from './StylecContext';
+import {StyleProvider} from './StylecContext';
 import Comp from '../components/Comp';
 import Products from '../components/Products';
 import Notes from '../components/Notes';
-import { Provider } from 'react-redux';
-import { store } from '../redux/store';
+import {Provider} from 'react-redux';
+import {store} from '../redux/store';
 import ComponentReusable from '../components/ComponentReusable';
 import Selection from '../components/Selection';
 
@@ -29,26 +29,26 @@ interface Items {
 
 type MyState = {
   count: number;
-}
+};
 
-const initialeState:MyState = {
-  count: 0
-}
+const initialeState: MyState = {
+  count: 0,
+};
 
-type Action={
-  type: 'INCREMENT' | 'DECREMENT'
-}
+type Action = {
+  type: 'INCREMENT' | 'DECREMENT';
+};
 
-const reducer = (state:MyState, action: Action):MyState=> {
+const reducer = (state: MyState, action: Action): MyState => {
   switch (action.type) {
     case 'INCREMENT':
-      return {...state, count:state.count+1}
-      case 'DECREMENT':
-        return{...state, count:state.count-1}
+      return {...state, count: state.count + 1};
+    case 'DECREMENT':
+      return {...state, count: state.count - 1};
     default:
       return state;
   }
-}
+};
 
 const Home = ({navigation}: HomeScreenProps) => {
   const [counter, setCounter] = useState<number>(0);
@@ -60,13 +60,12 @@ const Home = ({navigation}: HomeScreenProps) => {
 
   const ref = useRef<TextInput>(null);
 
-  const [state, dispatch] = useReducer(reducer, initialeState)
+  const [state, dispatch] = useReducer(reducer, initialeState);
 
   return (
-
     // <StyleProvider>
-  
-   <View style={{flex:1}}>
+
+    <View style={{flex: 1}}>
       {/* <Text
         style={{padding: 10, borderWidth: 1, color: '#000'}}
         onPress={() =>
@@ -87,16 +86,15 @@ const Home = ({navigation}: HomeScreenProps) => {
         <Comp/>
 
       </View> */}
-        {/* <Products /> */}
-        {/* <Provider store={store}>
+      {/* <Products /> */}
+      {/* <Provider store={store}>
     <Notes/>
     </Provider> */}
 
-    {/* <ComponentReusable/>  */}
-    <Selection/> 
+      {/* <ComponentReusable/>  */}
+      <Selection />
     </View>
     // </StyleProvider>
- 
   );
 };
 
